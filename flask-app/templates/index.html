@@ -3,47 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beyond the Headline: Detect Fake News, Now!</title>
+    <title>EchoAI News: Image Upload</title>
     <style>
-        body, html {
-            height: 90%;
-            margin: 10px;
-            padding: 0;
-        }
-
         body {
             text-align: center;
             padding: 20px;
-            border: 5px solid; /* Initial border */
-            border-image: linear-gradient(to right, blue, red, green); /* Animated border colors */
-            border-image-slice: 1;
-            animation: colorChange 5s infinite; /* Animation for color change */
-            margin-bottom: 20px; /* Adjust as needed */
-        }
-
-        @keyframes colorChange {
-            0% {
-                border-image-source: linear-gradient(to right, blue, red, green);
-            }
-            50% {
-                border-image-source: linear-gradient(to right, green, blue, red);
-            }
-            100% {
-                border-image-source: linear-gradient(to right, red, green, blue);
-            }
-        }
-
-        #typewriter {
-            text-align: center;
-            overflow: hidden;
+            border: 5px solid #0056b3;
+            background-image: url("bgNEWS.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         h1 {
-            background-color: #ddd; /* Grey background */
-            padding: 10px; /* Padding for the heading */
-            display: inline-block; /* Display as inline block to fit the content width */
-            width: 50%;
-            white-space: nowrap; /* Prevent line breaks */
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 20px;
+            display: inline-block;
+            width: 70%;
+            white-space: nowrap;
             overflow: hidden;
             animation: typing 5s steps(40) 3;
         }
@@ -57,101 +34,65 @@
             }
         }
 
-        .selected {
-            color: black; /* Change the color as needed */
-        }
-
-        .model-info {
-            font-style: italic;
-            font-size: smaller;
-            color: gray;
-        }
-
-        #resultText {
-            font-size: 16px; /* Small font size for the result text */
-            font-weight: bold;
-        }
-
-        .fake {
-            font-weight: bold;
-            color: red;
-            font-size: xx-large;
-            animation: typing 5s steps(40) 3;
-        }
-
-        .true {
-            font-weight: bold;
-            color: green;
-            font-size: xx-large;
-        }
-
         form {
-            margin-top: 20px; /* Add margin below the heading */
+            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        label[for="model"] {
+        label[for="files"] {
             font-weight: bold;
-            font-size: 16px; /* Slightly larger font size */
+            font-size: 18px;
+            color: #333;
         }
 
-        input[type="radio"] {
-            margin-right: 5px; /* Adjust the margin between radio buttons and labels */
+        input[type="file"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
-        textarea {
-            width: 50%; /* Set the width of the textarea */
-            resize: vertical; /* Allow vertical resizing */
-            margin: 30px;
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 12px 24px;
+            border: 2px solid #004080;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #004080;
         }
 
         #charCount {
-            font-size: 12px;
+            font-size: 14px;
             color: #555;
             text-align: right;
-            margin-bottom: 20px;
-            width: 75%;
+            margin-top: 10px;
         }
 
-        button {
-            background-color: #007BFF; /* Blue background */
-            color: #ffffff; /* White text */
-            padding: 10px 20px; /* Padding for the button */
-            border: 2px solid #0056b3; /* Border for bevel effect */
-            border-radius: 5px;
-            cursor: pointer; /* Add pointer cursor */
-            transition: background-color 0.3s, color 0.3s; /* Add transition for hover effect */
-        }
-
-        button:hover {
-            background-color: #0056b3; /* Darker blue background on hover */
+        #logo {
+            max-width: 100px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Image Upload</h1>
+    <h1>EchoAI News: Upload News Media</h1>
+
     <form action="/upload" method="post" enctype="multipart/form-data">
         <label for="files">Choose multiple images:</label>
+        <br>
         <input type="file" id="files" name="files[]" accept=".png, .jpg, .jpeg, .gif" multiple>
         <br>
         <input type="submit" value="Upload">
     </form>
-    </form>
-
-
-    <script>
-        // JavaScript to remember the radio button selection
-        function rememberSelection() {
-            return false;
-        }
-
-
-        // JavaScript to display character count
-        document.getElementById('news').addEventListener('input', function() {
-            var charCount = this.value.length;
-            document.getElementById('charCount').innerHTML = 'Character Count: ' + charCount;
-        });
-    </script>
 
 </body>
 </html>

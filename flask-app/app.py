@@ -5,20 +5,22 @@ from classifier import classifyImage
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
-app.config['OPENAI_API_KEY'] = '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'
+app.config['OPENAI_API_KEY'] = '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'
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 def generate_openai_response(context):
-    openai_url = 'https://api.openai.com/v1/chat/completions'  # Use the appropriate OpenAI endpoint
+    cont="I can see"+context+"in the pictures, describe whats going on in one sentence? Keep it factual, dont use emotional langues, stay neutral."
+    openai_url = 'https://api.openai.com/v1/completions'  # Use the appropriate OpenAI endpoint
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {app.config["OPENAI_API_KEY"]}'
     }
     data = {
-        'prompt': context,
-        'max_tokens': 50
+        'model': 'gpt-3.5-turbo-instruct',
+        'prompt': cont,
+        'max_tokens': 100
     }
     response = requests.post(openai_url, json=data, headers=headers)
     return response.json()['choices'][0]['text'] if response.ok else None
@@ -32,7 +34,7 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    descriptions='what do these words describe: '
+    descriptions=''
     if 'files[]' not in request.files:
         return "No files part"
 
