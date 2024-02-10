@@ -9,9 +9,10 @@
             text-align: center;
             padding: 20px;
             border: 5px solid #0056b3;
-            background-image: url("bgNEWS.jpg");
+            background-image: url("../static/bgNEWS.jpg");
             background-repeat: no-repeat;
             background-size: cover;
+            margin: 0; /* Reset default margin */
         }
 
         h1 {
@@ -75,14 +76,12 @@
             text-align: right;
             margin-top: 10px;
         }
-
-        #logo {
-            max-width: 100px;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
+    <div class="logo" style="width:10%;">
+        <img src="../static/ECHO2.png" alt="Logo">
+    </div>
 
     <h1>EchoAI News: Upload News Media</h1>
 
